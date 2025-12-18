@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bella Pizza - Authentic Pizza in Eats Greenbush</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/Logo2.png">
+
+    <style>
+        /* ----- 1. VARIABLES GLOBALES Y CONFIGURACIÓN ----- */
+        :root {
+            /* Paleta de Colores */
+            --color-rojo: #E62224;
+            --color-amarillo: #FFD230;
+            --color-naranja: #D93B00;
+            --color-texto: #333333;
+            --color-blanco: #FFFFFF;
+            --color-fondo: #F9F9F9;
+            --color-footer-texto: #ffffffcc;
+            /* Tipografía */
+            --font-titulos: 'Bebas Neue', sans-serif;
+            --font-cuerpo: 'Lato', sans-serif;
+            /* Otros */
+            --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Reseteo Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-cuerpo);
+            color: var(--color-texto);
+            background-color: var(--color-fondo);
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: var(--font-titulos);
+            font-size: 3rem;
+            letter-spacing: 1.5px;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-texto);
+        }
+
+        .section-title.left-align {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.8rem;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--color-rojo);
+            color: var(--color-blanco);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-naranja);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-amarillo);
+            color: var(--color-texto);
+        }
+
+        .btn-secondary:hover {
+            background-color: #ffc90d;
+            transform: translateY(-3px);
+        }
+
+        .btn-small {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ----- 0. NAVEGACIÓN ----- */
+        .logo {
+            height: 100px;
+            width: auto;
+            display: block;
+        }
+
+        .navbar {
+            background-color: var(--color-blanco);
+            padding: 1rem 0;
+            box-shadow: var(--sombra-suave);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-texto);
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-rojo);
+        }
+
+        /* ESTILOS PARA EL BOTÓN HAMBURGUESA */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-texto);
+            cursor: pointer;
+            z-index: 110;
+        }
+
+        /* ----- 1. HERO SECTION ----- */
+        .hero {
+            min-height: 100vh;
+            padding: 4rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url("img/Hero.jpg");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .hero-content {
+            color: var(--color-blanco);
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-titulos);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        /* ----- 2. SECCIÓN SOBRE NOSOTROS ----- */
+        .about-section {
+            padding: 5rem 0;
+            background-color: var(--color-blanco);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -15%;
+            width: 450px;
+            height: 600px;
+            background-color: var(--color-rojo);
+            border-radius: 40% 60% 70% 30% / 40% 50% 50% 60%;
+            transform: rotate(15deg);
+            opacity: 0.7;
+            z-index: 1;
+            animation: blobAnimation 10s infinite alternate ease-in-out;
+        }
+
+        .about-section::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            right: -15%;
+            width: 500px;
+            height: 700px;
+            background-color: var(--color-amarillo);
+            border-radius: 30% 70% 50% 50% / 60% 40% 60% 40%;
+            transform: rotate(-20deg);
+            opacity: 0.6;
+            z-index: 1;
+            animation: blobAnimation 12s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes blobAnimation {
+            0% {
+                transform: scale(1) rotate(15deg);
+            }
+
+            50% {
+                transform: scale(1.05) rotate(18deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(15deg);
+            }
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .about-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-list li {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--color-texto);
+        }
+
+        .about-list li i {
+            color: var(--color-rojo);
+            margin-right: 0.5rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ----- 3. NUESTRAS DESTACADAS ----- */
+        .menu-highlights {
+            padding: 5rem 0;
+            background-image: url("img/3eraSection.jpg");
+        }
+
+        .menu-highlights .section-title {
+            color: var(--color-blanco);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background-color: var(--color-blanco);
+            border-radius: 10px;
+            box-shadow: var(--sombra-suave);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .menu-card h3 {
+            font-family: var(--font-titulos);
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card p {
+            padding: 0 1.5rem;
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1rem;
+            height: 60px;
+        }
+
+        .menu-card .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-rojo);
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ----- 4. TEXTO LLAMATIVO ----- */
+        .cta-banner-text {
+            padding: 4rem 0;
+            background-color: var(--color-amarillo);
+            text-align: center;
+        }
+
+        .cta-banner-text h2 {
+            font-family: var(--font-titulos);
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: var(--color-texto);
+        }
+
+        .cta-banner-text p {
+            font-size: 1.1rem;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ----- 5. DELIVERY Y RETIRO ----- */
+        .services {
+            background-color: var(--color-blanco);
+            padding: 5rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .service-item i {
+            font-size: 3rem;
+            color: var(--color-rojo);
+            margin-bottom: 1rem;
+        }
+
+        .service-item h3 {
+            font-family: var(--font-titulos);
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-item p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* ----- 6. UBICACIÓN ----- */
+        .location {
+            padding: 5rem 0;
+            background-color: var(--color-fondo);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background-color: var(--color-rojo);
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            z-index: 0;
+        }
+
+        .location::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background-color: var(--color-amarillo);
+            clip-path: polygon(100% 0, 100% 100%, 0 100%);
+            z-index: 0;
+            opacity: 0.7;
+        }
+
+        .location .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .location .section-title {
+            display: inline-block;
+            background-color: var(--color-rojo);
+            color: var(--color-blanco);
+            padding: 0.5rem 2rem;
+            border-radius: 50px;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-map {
+            position: relative;
+            z-index: 2;
+        }
+
+        .location-map iframe {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 450px;
+        }
+
+        .location-info {
+            background: var(--color-blanco);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .location-info::before {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            right: -80px;
+            width: 250px;
+            height: 250px;
+            background-color: var(--color-amarillo);
+            border-radius: 50%;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        .location-info>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .location-info h3 {
+            font-family: var(--font-titulos);
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            color: var(--color-rojo);
+            margin-bottom: 1.5rem;
+        }
+
+        .location-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .location-info p i {
+            color: var(--color-rojo);
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .location-info h4 {
+            font-family: var(--font-titulos);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-info ul {
+            list-style: none;
+            font-size: 1.1rem;
+            padding: 0;
+            text-align: center;
+        }
+
+        .location-info li {
+            margin-bottom: 0.5rem;
+        }
+
+        .location-info .btn {
+            margin-top: 2rem;
+        }
+
+        /* ----- 7. FOOTER ----- */
+        .footer {
+            background-color: var(--color-blanco);
+            color: var(--color-rojo);
+            padding: 4rem 0 2rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .logo-footer {
+            height: 70px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo p {
+            font-size: 0.9rem;
+            max-width: 300px;
+            color: var(--color-rojo);
+        }
+
+        .footer h4 {
+            font-family: var(--font-titulos);
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: var(--color-rojo);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul,
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--color-amarillo);
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-rojo);
+            text-decoration: underline;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--color-footer-rojo);
+        }
+
+        .footer-contact i {
+            color: var(--color-amarillo);
+            margin-right: 0.75rem;
+            width: 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-naranja);
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: var(--color-rojo);
+        }
+
+        /* ----- 7.5. Animación "Scroll Reveal" ----- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ----- 8. ESTILOS RESPONSIVE (MÓVIL) ----- */
+        @media (max-width: 768px) {
+            .section-title.left-align {
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-grid,
+            .menu-grid,
+            .services-grid,
+            .location-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                text-align: center;
+            }
+
+            .about-image {
+                grid-row: 1;
+            }
+
+            .about-section::before {
+                width: 300px;
+                height: 400px;
+                top: -5%;
+                left: -20%;
+                opacity: 0.5;
+            }
+
+            .about-section::after {
+                width: 350px;
+                height: 450px;
+                bottom: -5%;
+                right: -20%;
+                opacity: 0.4;
+            }
+
+            .services-grid {
+                gap: 3rem;
+            }
+
+            .menu-card p {
+                height: auto;
+            }
+
+            /* Ubicación */
+            .location {
+                padding: 3rem 0;
+            }
+
+            .location::before,
+            .location::after {
+                display: none;
+            }
+
+            .location-grid {
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .location-map iframe {
+                height: 300px;
+            }
+
+            .location-info {
+                padding: 2.5rem;
+                height: auto;
+            }
+
+            .location-info p,
+            .location-info ul {
+                justify-content: center;
+                text-align: center;
+            }
+
+            /* Footer */
+            .footer-grid {
+                text-align: center;
+            }
+
+            .logo-footer {
+                margin: 0 auto 1rem auto;
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+
+            /* --- MENÚ MÓVIL --- */
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                /* Ajusta según la altura de tu logo/navbar */
+                left: 0;
+                width: 100%;
+                background-color: var(--color-blanco);
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 1rem 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                padding: 1rem 0;
+                display: block;
+                font-size: 1.2rem;
+            }
+
+            /* Esta clase la usará JavaScript para MOSTRAR el menú */
+            .nav-links.active {
+                display: flex;
+            }
+
+            /* Muestra el botón hamburguesa en móvil */
+            .nav-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                <img src="img/Logo2.png" alt="La Bella Pizza Logo" class="logo">
+            </a>
+
+            <nav class="nav-menu">
+                <ul class="nav-links" id="nav-links-menu">
+                    <li><a href="#about">Why choose us?</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="#location">Location</a></li>
+                </ul>
+            </nav>
+
+            <a class="btn btn-primary"
+                href="https://slicelife.com/restaurants/ny/east-greenbush/12061/la-bella-pizzeria-east-greenbush/menu?utm_campaign=order_now_button&utm_medium=referral&utm_content=custom_button&utm_source=">
+                ORDER ONLINE
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle-btn" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Freshly Made. Always Hot.</h1>
+            <p>Authentic Greenbush pizza, now straight to your door.</p>
+            <div class="hero-buttons">
+                <a href="order.html" class="btn btn-primary">Order Now!</a>
+                <a href="#destacadas" class="btn btn-secondary">View Pizzas</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container about-grid">
+            <div class="about-text fade-in">
+                <h2 class="section-title left-align">More than Pizza. <br>A Tradition of Flavor.</h2>
+                <p>At La Bella Pizza, we don't just make food. We create experiences. While other pizzerias use frozen
+                    ingredients, we knead our dough fresh every morning and chop vegetables from local farms.</p>
+                <ul class="about-list">
+                    <li><i class="fas fa-check-circle"></i> Artisan dough prepared daily.</li>
+                    <li><i class="fas fa-check-circle"></i> Tomato sauce with nonna's secret recipe.</li>
+                    <li><i class="fas fa-check-circle"></i> 100% fresh ingredients, never frozen.</li>
+                </ul>
+                <p><strong>Choose La Bella Pizza and taste the difference.</strong></p>
+            </div>
+            <div class="about-image fade-in">
+                <img src="img/2daSection.jpg" alt="Kneading fresh pizza">
+            </div>
+        </div>
+    </section>
+
+    <section id="destacadas" class="menu-highlights">
+        <div class="container">
+            <h2 class="section-title">Our Featured Pizzas</h2>
+            <div class="menu-grid">
+                <div class="menu-card fade-in">
+                    <img src="img/pizza_Classic Pepperoni.jpg" alt="Pepperoni Pizza">
+                    <h3>Classic Pepperoni</h3>
+                    <p>The classic pepperoni with our premium cheese.</p> <span class="price">$14.99</span>
+                    <button class="btn btn-primary btn-small">Add to Cart</button>
+                </div>
+                <div class="menu-card fade-in">
+                    <img src="img/SpecialtyPizza/pizza_Margarita.jpg" alt="Margherita Pizza">
+                    <h3>Margherita</h3>
+                    <p>Fresh tomato, basil, and buffalo mozzarella.</p> <span class="price">$12.99</span>
+                    <button class="btn btn-primary btn-small">Add to Cart</button>
+                </div>
+                <div class="menu-card fade-in">
+                    <img src="img/The Bella Supreme.jpg" alt="Supreme Pizza">
+                    <h3>The Bella Supreme</h3>
+                    <p>Our house special pizza with all the toppings.</p> <span class="price">$16.99</span>
+                    <button class="btn btn-primary btn-small">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner-text">
+        <div class="container">
+            <h2>The La Bella Pizza Promise</h2>
+            <p>Tired of cold pizzas or wrong orders? We guarantee two things: <br> your order will arrive hot and
+                correct, always.</p>
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <div class="container services-grid">
+            <div class="service-item fade-in">
+                <i class="fas fa-motorcycle"></i>
+                <h3>Home Delivery</h3>
+                <p>Fast and hot, wherever you are.</p>
+            </div>
+            <div class="service-item fade-in">
+                <i class="fas fa-store"></i>
+                <h3>Pick-up in Store</h3>
+                <p>Your order, ready when you arrive.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="location">
+        <div class="container">
+            <h2 class="section-title">Find Us in Greenbush</h2>
+            <div class="location-grid">
+                <div class="location-map fade-in">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2937.0726463325173!2d-73.71069582405605!3d42.59620217117194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89dde25c6b5a5a1b%3A0x3d745fad10ba27a!2s620%20Columbia%20Turnpike%2C%20East%20Greenbush%2C%20NY%2012061%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sec!4v1763163823411!5m2!1ses-419!2sec"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="location-info fade-in">
+                    <h3>Come Grab a Slice</h3>
+                    <p><i class="fas fa-map-marker-alt"></i>620 Columbia Turnpike EAST Greenbush, NY 12061</p>
+                    <h4>Opening Hours</h4>
+                    <ul>
+                        <li><strong>Monday - Thursday:</strong> 9:30AM - 9:30PM</li>
+                        <li><strong>Friday - Saturday:</strong> 9:30AM - 10:00PM</li>
+                        <li><strong>Sunday:</strong> 9:30AM - 9:30PM</li>
+                    </ul>
+                    <a href="tel:555-1234" class="btn btn-primary">Call to Order</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-logo">
+                <img src="img/Logo2.png" alt="La Bella Pizza Logo" class="logo-footer">
+                <p>Authentic flavor, fresh ingredients.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#destacadas">Featured Pizzas</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="order.html">Order Online</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-phone"></i> (518) 479-4411</p>
+                <p><i class="fas fa-envelope"></i> orders@labellapizza.com</p>
+                <p><i class="fas fa-map-marker-alt"></i>620 Columbia Turnpike EAST Greenbush, NY 12061</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 La Bella Pizza. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        /* --- ========================================== --- */
+        /* --- 1. LÓGICA DEL MENÚ HAMBURGUESA (MÓVIL) --- */
+        /* --- ========================================== --- */
+
+        const navToggleBtn = document.getElementById('nav-toggle-btn');
+        const navLinksMenu = document.getElementById('nav-links-menu');
+
+        if (navToggleBtn && navLinksMenu) {
+
+            navToggleBtn.addEventListener('click', () => {
+                navLinksMenu.classList.toggle('active');
+
+                const icon = navToggleBtn.querySelector('i');
+                if (navLinksMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                    navToggleBtn.setAttribute('aria-label', 'Close menu');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    navToggleBtn.setAttribute('aria-label', 'Open menu');
+                }
+            });
+
+        } else {
+            console.error("No se encontraron los elementos del menú: nav-toggle-btn o nav-links-menu");
+        }
+
+
+        /* --- ========================================= --- */
+        /* --- 2. LÓGICA DE ANIMACIÓN (SCROLL REVEAL) --- */
+        /* --- ========================================= --- */
+
+        const elementsToFade = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const fadeInCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(fadeInCallback, observerOptions);
+
+        elementsToFade.forEach(element => {
+            observer.observe(element);
+        });
+
+    </script>
+
+</body>
+
+</html>
